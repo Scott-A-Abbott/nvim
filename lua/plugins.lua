@@ -9,12 +9,36 @@ return require("packer").startup(function(use)
     end,
   }
 
+  -- use {
+  --   "ayu-theme/ayu-vim",
+  --   config = function()
+  --     vim.opt.termguicolors = true
+  --     vim.g.ayucolor = "mirage"
+
+  --     local set_colorscheme = "silent! colorscheme ayu"
+  --     vim.cmd(set_colorscheme)
+  --   end,
+  -- }
+
   use {
-    "ayu-theme/ayu-vim",
+    "Shatur/neovim-ayu",
     config = function()
       vim.opt.termguicolors = true
-      vim.g.ayucolor = "mirage"
-      vim.cmd [[silent! colorscheme ayu]]
+      vim.wo.cursorline = true
+
+      require('ayu').setup({
+        mirage = true, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
+        overrides = {
+          LineNr = { fg = "#8691A3" },
+          -- Cursor = { fg = "#000000", bg = "#FFFFFF" },
+          CursorLine = { bg = "#0A0E14" },
+          CursorLineNr = { fg = "#FFCC66" },
+          WhichKeyFloat = { bg = "#333C52" },
+        }, -- A dictionary of group names, each associated with a dictionary of parameters (`bg`, `fg`, `sp` and `style`) and colors in hex.
+      })
+
+      local set_colorscheme = "silent! colorscheme ayu"
+      vim.cmd(set_colorscheme)
     end
   }
 
@@ -54,6 +78,16 @@ return require("packer").startup(function(use)
           -- Instead of true it can also be a list of languages
           additional_vim_regex_highlighting = false,
         }
+      }
+    end
+  }
+
+  use { 
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+      require("indent_blankline").setup {
+        show_current_context = true,
+        show_current_context_start = true,
       }
     end
   }

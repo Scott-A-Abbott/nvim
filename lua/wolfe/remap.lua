@@ -24,17 +24,19 @@ wk.register({
     },
 
     w = {
-      name = "[W]indow",
-      v = { "<CMD>vsplit<CR>", "[V]ertical Split"},
-      h = { "<CMD>split<CR>", "[H]orizontal Split" },
+      name = "Window",
+      v = { "<CMD>vsplit<CR>", "Vertical split"},
+      h = { "<CMD>split<CR>", "Horizontal split" },
     },
 
     b = {
-      name = "[B]uffer"
+      name = "Buffer",
+      d = { "<CMD>bd<CR>", "Delete" },
+      n = { "<CMD>vnew<CR>", "New scratch" },
     },
 
     d = {
-      name = "[D]irectory Explorer (Drex)",
+      name = "Drex",
       o = {
         function ()
           local drex = require('drex')
@@ -47,7 +49,7 @@ wk.register({
             elements.focus_element(0, path)
           end
         end,
-        "[O]pen"
+        "Open"
       },
     }
   }
@@ -69,7 +71,7 @@ require("drex.config").configure {
         end
       end,
 
-      ["]"] = function()
+      ["J"] = function()
         local line = vim.api.nvim_get_current_line()
 
         local path
@@ -83,7 +85,7 @@ require("drex.config").configure {
         vim.api.nvim_set_current_dir(path)
       end,
 
-      ["["] = function()
+      ["K"] = function()
         elements.open_parent_directory()
         -- This could be wrong. Is there a chance it sets a different directory than intended?
         vim.api.nvim_set_current_dir("..")
