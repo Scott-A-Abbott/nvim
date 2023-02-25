@@ -9,17 +9,6 @@ return require("packer").startup(function(use)
     end,
   }
 
-  -- use {
-  --   "ayu-theme/ayu-vim",
-  --   config = function()
-  --     vim.opt.termguicolors = true
-  --     vim.g.ayucolor = "mirage"
-
-  --     local set_colorscheme = "silent! colorscheme ayu"
-  --     vim.cmd(set_colorscheme)
-  --   end,
-  -- }
-
   use {
     "Shatur/neovim-ayu",
     config = function()
