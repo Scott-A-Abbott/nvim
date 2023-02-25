@@ -34,6 +34,7 @@ return require("packer").startup(function(use)
           CursorLine = { bg = "#0A0E14" },
           CursorLineNr = { fg = "#FFCC66" },
           WhichKeyFloat = { bg = "#333C52" },
+          Comment = { fg = "#8691A3" },
         }, -- A dictionary of group names, each associated with a dictionary of parameters (`bg`, `fg`, `sp` and `style`) and colors in hex.
       })
 
