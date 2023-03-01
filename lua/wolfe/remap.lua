@@ -23,6 +23,15 @@ wk.register({
       c = { "<CMD>Telescope current_buffer_fuzzy_find<CR>", "In current buffer" },
     },
 
+    g = {
+      name = "Git",
+      o = { "<CMD>Neogit<CR>", "Open" },
+      c = { "<CMD>Neogit commit<CR>", "Commit" },
+      p = { "<CMD>Neogit pull<CR>", "Pull" },
+      l = { "<CMD>Neogit log<CR>", "Log" },
+      ["P"] = { "<CMD>Neogit push<CR>", "Push" },
+    },
+
     w = {
       name = "Window",
       v = { "<CMD>vsplit<CR>", "Vertical split"},

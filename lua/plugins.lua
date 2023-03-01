@@ -1,9 +1,9 @@
 return require("packer").startup(function(use)
-  use 'wbthomason/packer.nvim'
+  use "wbthomason/packer.nvim"
 
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.x',
-    requires = { {'nvim-lua/plenary.nvim'} },
+    "nvim-telescope/telescope.nvim", tag = "0.1.x",
+    requires = { {"nvim-lua/plenary.nvim"} },
     config = function()
       require "telescope".setup {}
     end,
@@ -15,7 +15,7 @@ return require("packer").startup(function(use)
       vim.opt.termguicolors = true
       vim.wo.cursorline = true
 
-      require('ayu').setup({
+      require("ayu").setup({
         mirage = true, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
         overrides = {
           LineNr = { fg = "#8691A3" },
@@ -34,21 +34,24 @@ return require("packer").startup(function(use)
 
   use { 
     "TimUntersberger/neogit",
-    requires = "nvim-lua/plenary.nvim",
+    requires = {"nvim-lua/plenary.nvim", "sindrets/diffview.nvim"},
     config = function()
-      require "neogit".setup {}
+      require "neogit".setup {
+        kind = "replace",
+        integrations = { diffview = true },
+      }
     end,
   }
 
   use {
-    'theblob42/drex.nvim',
-    requires = 'kyazdani42/nvim-web-devicons', -- optional
+    "theblob42/drex.nvim",
+    requires = "kyazdani42/nvim-web-devicons", -- optional
   }
 
   use {
     "nvim-treesitter/nvim-treesitter",
     config = function()
-      require 'nvim-treesitter.configs'.setup {
+      require "nvim-treesitter.configs".setup {
         ensure_installed = { "bash", "css", "dockerfile", "html", "help", "javascript", "typescript", "tsx", "json", "markdown", "scss", "sql", "lua", "ruby", "rust", "toml", "yaml", },
 
         -- Install parsers synchronously (only applied to `ensure_installed`)
@@ -87,9 +90,12 @@ return require("packer").startup(function(use)
     config = function() require("neoscroll").setup() end
   }
 
+  -- Integrate with lualine
+  use "f-person/git-blame.nvim"
+
   use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+    "nvim-lualine/lualine.nvim",
+    requires = { "kyazdani42/nvim-web-devicons", opt = true },
     config = function()
       require "lualine".setup({
         extensions = { "nvim-tree", "drex" },
