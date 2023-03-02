@@ -1,3 +1,9 @@
+function relative_path()
+  local root = vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
+  local path = vim.fn.fnamemodify(vim.fn.expand('%'), ':~:.')
+  return root .. '/' .. path
+end
+ 
 return require("packer").startup(function(use)
   use "wbthomason/packer.nvim"
 
@@ -97,16 +103,26 @@ return require("packer").startup(function(use)
     config = function() require("neoscroll").setup() end
   }
 
-  -- Integrate with lualine
-  use "f-person/git-blame.nvim"
-
   use {
     "nvim-lualine/lualine.nvim",
-    requires = { "kyazdani42/nvim-web-devicons", opt = true },
+    requires = { "kyazdani42/nvim-web-devicons", "f-person/git-blame.nvim"},
     config = function()
+      vim.g.gitblame_display_virtual_text = 0 -- Disable virtual text
+      local git_blame = require('gitblame')
+
       require "lualine".setup({
         extensions = { "nvim-tree", "drex" },
         options = { theme = "ayu" },
+        sections = {
+          lualine_a = {'mode'},
+          lualine_b = {'branch'},
+          lualine_c = { relative_path },
+          lualine_x = {
+            { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available }
+          },
+          lualine_y = {'progress'},
+          lualine_z = {'location'}
+        },
       })
     end
   }
