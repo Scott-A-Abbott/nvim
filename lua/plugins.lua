@@ -181,4 +181,11 @@ return require("packer").startup(function(use)
       lsp.setup()
     end
   }
+
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
+  }
 end)
