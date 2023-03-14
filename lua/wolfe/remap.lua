@@ -55,13 +55,13 @@ wk.register({
           drex.open_directory_buffer() -- open at cwd
 
           if not (path == "") then
-            elements.focus_element(0, path)
+            pcall(elements.focus_element, 0, path)
           end
         end,
         "Open"
       },
-    }
-  }
+    },
+  },
 })
 
 local elements = require("drex.elements")
