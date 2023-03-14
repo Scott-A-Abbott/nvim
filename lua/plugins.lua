@@ -43,7 +43,6 @@ return require("packer").startup(function(use)
     requires = {"nvim-lua/plenary.nvim", "sindrets/diffview.nvim"},
     config = function()
       require "neogit".setup {
-        kind = "replace",
         integrations = { diffview = true },
       }
     end,
