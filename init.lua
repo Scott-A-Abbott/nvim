@@ -10,3 +10,6 @@ if is_dir == 1 then
   vim.api.nvim_set_current_dir(path)
   drex.open_directory_buffer()
 end
+
+vim.opt.spell = true
+vim.g.spelllang = "en_us"
