@@ -98,6 +98,11 @@ require("drex.config").configure {
         elements.open_parent_directory()
         -- This could be wrong. Is there a chance it sets a different directory than intended?
         vim.api.nvim_set_current_dir("..")
+      end,
+
+      ["q"] = function()
+        local handle = vim.api.nvim_get_current_buf()
+        vim.api.nvim_buf_delete(handle, { force = true })
       end
     }
   }
