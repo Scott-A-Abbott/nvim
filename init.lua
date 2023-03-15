@@ -13,3 +13,6 @@ end
 
 vim.opt.spell = true
 vim.g.spelllang = "en_us"
+
+-- Set yank to use clipboard by default
+vim.cmd [[set clipboard+=unnamedplus]]
