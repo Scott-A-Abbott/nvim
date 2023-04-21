@@ -10,6 +10,11 @@ local builtin = require "telescope.builtin"
 
 local wk = require("which-key")
 
+-- Visual Multi remap
+local keymap_options = { noremap = true }
+vim.api.nvim_set_keymap("n", "<C-d>", "<Plug>(VM-Add-Cursor-Down)", keymap_options)
+vim.api.nvim_set_keymap("n", "<C-u>", "<Plug>(VM-Add-Cursor-Up)", keymap_options)
+
 wk.register({
   ["<leader>"] = {
     name = "Space",

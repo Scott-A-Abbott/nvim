@@ -100,11 +100,6 @@ return require("packer").startup(function(use)
   }
 
   use {
-    "karb94/neoscroll.nvim",
-    config = function() require("neoscroll").setup() end
-  }
-
-  use {
     "nvim-lualine/lualine.nvim",
     requires = { "kyazdani42/nvim-web-devicons", "f-person/git-blame.nvim"},
     config = function()
