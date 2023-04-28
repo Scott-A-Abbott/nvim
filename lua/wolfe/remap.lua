@@ -19,6 +19,10 @@ wk.register({
   ["<leader>"] = {
     name = "Space",
 
+    q = { "<CMD>q<CR>", "Quit" },
+    Q = { "<CMD>q!<CR>", "Force quit" },
+    w = { "<CMD>w<CR>", "Write buffer" },
+
     f = {
       name = "Fuzzy find",
       f = { "<CMD>Telescope find_files<CR>", "File" },
@@ -37,7 +41,7 @@ wk.register({
       ["P"] = { "<CMD>Neogit push<CR>", "Push" },
     },
 
-    w = {
+    W = {
       name = "Window",
       v = { "<CMD>vsplit<CR>", "Vertical split"},
       h = { "<CMD>split<CR>", "Horizontal split" },
