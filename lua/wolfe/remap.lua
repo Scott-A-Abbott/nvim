@@ -46,7 +46,7 @@ wk.register({
     b = {
       name = "Buffer",
       d = { "<CMD>bd<CR>", "Delete" },
-      n = { "<CMD>vnew<CR>", "New scratch" },
+      n = { "<CMD>enew<CR>", "New scratch" },
     },
 
     d = {

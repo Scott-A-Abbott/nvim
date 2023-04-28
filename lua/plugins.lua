@@ -13,8 +13,35 @@ return require("packer").startup(function(use)
     "nvim-telescope/telescope.nvim", tag = "0.1.x",
     requires = { {"nvim-lua/plenary.nvim"} },
     config = function()
-      require "telescope".setup {}
+      local actions = require "telescope.actions"
+
+      require "telescope".setup({
+        defaults = {
+          sorting_strategy = "ascending",
+          layout_config = { 
+            horizontal = { prompt_position = "top" },
+            vertical = { mirror = false },
+            scroll_speed = 1
+          },
+          mappings = {
+            i = {
+              ["<C-n>"] = actions.cycle_history_next,
+              ["<C-p>"] = actions.cycle_history_prev,
+              ["<C-j>"] = actions.move_selection_next,
+              ["<C-k>"] = actions.move_selection_previous,
+            },
+            n = { ["q"] = actions.close }
+          }
+        }
+      })
     end,
+  }
+
+  use {
+    "max397574/better-escape.nvim",
+    config = function()
+      require("better_escape").setup({ timeout = 250 })
+    end
   }
 
   use {
@@ -192,5 +219,4 @@ return require("packer").startup(function(use)
       require("nvim-autopairs").setup {}
     end
   }
-
 end)
