@@ -38,6 +38,19 @@ return require("packer").startup(function(use)
   }
 
   use {
+    "nvim-pack/nvim-spectre",
+    requires = { {"nvim-lua/plenary.nvim"} },
+    config = function()
+      require("spectre").setup({
+        open_cmd = "tabnew",
+        mapping = {
+          ["send_to_qf"] = { map = "qq" },
+        }
+      })
+    end
+  }
+
+  use {
     "max397574/better-escape.nvim",
     config = function()
       require("better_escape").setup({ timeout = 250 })

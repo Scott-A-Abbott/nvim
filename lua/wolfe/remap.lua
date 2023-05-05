@@ -70,6 +70,21 @@ wk.register({
         "Open"
       },
     },
+
+    s = {
+      name = "Spectre",
+      o = { function() spectre.open() end, "Open" },
+      w = { function() spectre.oopen_visual({select_word=true}) end, "Search for current word" },
+      f = { function() spectre.open_file_search({select_word=true}) end, "Search current file for word" }
+    },
+
+    t = {
+      name = "Tab",
+      n = { "<CMD>tabnew<CR>", "New" },
+      q = { "<CMD>tabclose<CR>", "Close current" },
+      [">"] = { "<CMD>tabnext<CR>", "Next" },
+      ["<"] = { "<CMD>tabprevious<CR>", "Previous" },
+    }
   },
 })
 
