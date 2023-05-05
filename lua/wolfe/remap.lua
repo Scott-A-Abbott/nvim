@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 
 -- Telescope
-local builtin = require "telescope.builtin"
+-- local builtin = require "telescope.builtin"
 -- vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
 -- vim.keymap.set("n", "<leader>fg", builtin.git_files, {})
 -- vim.keymap.set("n", "<leader>fs", builtin.live_grep, {})
@@ -10,18 +10,23 @@ local builtin = require "telescope.builtin"
 
 local wk = require("which-key")
 
+local spectre = require("spectre")
+
 -- Visual Multi remap
 local keymap_options = { noremap = true }
 vim.api.nvim_set_keymap("n", "<C-d>", "<Plug>(VM-Add-Cursor-Down)", keymap_options)
 vim.api.nvim_set_keymap("n", "<C-u>", "<Plug>(VM-Add-Cursor-Up)", keymap_options)
 
 wk.register({
+  ["?"] = { "<CMD>WhichKey<CR>", "Keys" },
   ["<leader>"] = {
     name = "Space",
 
     q = { "<CMD>q<CR>", "Quit" },
     Q = { "<CMD>q!<CR>", "Force quit" },
     w = { "<CMD>w<CR>", "Write buffer" },
+    [">"] = { "<CMD>bnext<CR>", "Next buffer" },
+    ["<"] = { "<CMD>bprevious<CR>", "Previous buffer" },
 
     f = {
       name = "Fuzzy find",
@@ -50,7 +55,7 @@ wk.register({
     b = {
       name = "Buffer",
       d = { "<CMD>bd<CR>", "Delete" },
-      n = { "<CMD>enew<CR>", "New scratch" },
+      s = { "<CMD>enew<CR>", "Scratch" },
     },
 
     d = {
