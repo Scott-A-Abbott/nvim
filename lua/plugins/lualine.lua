@@ -1,3 +1,11 @@
+local function relative_path()
+  return vim.fn.fnamemodify(vim.fn.expand('%'), ':~:.')
+end
+
+local function current_directory()
+  return vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
+end
+
 return {
   "nvim-lualine/lualine.nvim",
   dependencies = { "kyazdani42/nvim-web-devicons", "f-person/git-blame.nvim"},
