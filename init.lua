@@ -1,18 +1,18 @@
-require "plugins"
-require "wolfe"
+vim.g.mapleader = " "
 
-local drex = require("drex")
-
-local path = vim.fn.expand("%:p")
-local is_dir = vim.fn.isdirectory(path)
-
-if is_dir == 1 then
-  vim.api.nvim_set_current_dir(path)
-  drex.open_directory_buffer()
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
-vim.opt.spell = true
-vim.g.spelllang = "en_us"
-
--- Set yank to use clipboard by default
-vim.cmd [[set clipboard+=unnamedplus]]
+require("lazy").setup("plugins")
+require("wolfe")
+require("wolfe.remap")

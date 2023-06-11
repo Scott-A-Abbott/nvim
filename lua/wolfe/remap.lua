@@ -1,5 +1,3 @@
-vim.g.mapleader = " "
-
 -- Telescope
 -- local builtin = require "telescope.builtin"
 -- vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
@@ -9,8 +7,6 @@ vim.g.mapleader = " "
 -- vim.keymap.set("n", "<leader>fc", builtin.current_buffer_fuzzy_find, {})
 
 local wk = require("which-key")
-
-local spectre = require("spectre")
 
 -- Visual Multi remap
 local keymap_options = { noremap = true }
@@ -74,13 +70,6 @@ wk.register({
         end,
         "Open"
       },
-    },
-
-    s = {
-      name = "Spectre",
-      o = { function() spectre.open() end, "Open" },
-      w = { function() spectre.oopen_visual({select_word=true}) end, "Search for current word" },
-      f = { function() spectre.open_file_search({select_word=true}) end, "Search current file for word" }
     },
 
     t = {
