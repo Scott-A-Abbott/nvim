@@ -1,13 +1,13 @@
 return {
   "nvim-telescope/telescope.nvim", version = "0.1.x",
-  dependencies = { {"nvim-lua/plenary.nvim"} },
+  dependencies = { "nvim-lua/plenary.nvim" },
   config = function()
     local actions = require "telescope.actions"
 
     require "telescope".setup({
       defaults = {
         sorting_strategy = "ascending",
-        layout_config = { 
+        layout_config = {
           horizontal = { prompt_position = "top" },
           vertical = { mirror = false },
           scroll_speed = 1
