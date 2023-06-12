@@ -30,10 +30,10 @@ wk.register({
       ["P"] = { "<CMD>Neogit push<CR>", "Push" },
     },
 
-    W = {
-      name = "Window",
-      v = { "<CMD>vsplit<CR>", "Vertical split"},
-      h = { "<CMD>split<CR>", "Horizontal split" },
+    s = {
+      name = "Split window",
+      v = { "<CMD>vsplit<CR>", "Vertical"},
+      h = { "<CMD>split<CR>", "Horizontal" },
     },
 
     b = {
