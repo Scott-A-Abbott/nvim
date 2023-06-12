@@ -18,6 +18,7 @@ wk.register({
   ["<leader>"] = {
     name = "Space",
 
+    r = { "<CMD>MurenToggle<CR>", "Replace" },
     q = { "<CMD>q<CR>", "Quit" },
     Q = { "<CMD>q!<CR>", "Force quit" },
     w = { "<CMD>w<CR>", "Write buffer" },
