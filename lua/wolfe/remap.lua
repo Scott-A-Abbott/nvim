@@ -52,21 +52,18 @@ wk.register({
     },
 
     d = {
-      name = "Drex",
-      o = {
-        function ()
-          local drex = require('drex')
-          local elements = require('drex.elements')
-          local path = vim.fn.expand("%:p")
+      function ()
+        local drex = require('drex')
+        local elements = require('drex.elements')
+        local path = vim.fn.expand("%:p")
 
-          drex.open_directory_buffer() -- open at cwd
+        drex.open_directory_buffer() -- open at cwd
 
-          if not (path == "") then
-            pcall(elements.focus_element, 0, path)
-          end
-        end,
-        "Open"
-      },
+        if not (path == "") then
+          pcall(elements.focus_element, 0, path)
+        end
+      end,
+      "Drex"
     },
 
     t = {
