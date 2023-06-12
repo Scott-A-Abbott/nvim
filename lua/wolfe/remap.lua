@@ -18,7 +18,6 @@ wk.register({
   ["<leader>"] = {
     name = "Space",
 
-    r = { "<CMD>MurenToggle<CR>", "Replace" },
     q = { "<CMD>q<CR>", "Quit" },
     Q = { "<CMD>q!<CR>", "Force quit" },
     w = { "<CMD>w<CR>", "Write buffer" },
@@ -53,7 +52,7 @@ wk.register({
     },
 
     d = {
-      function ()
+      function()
         local drex = require('drex')
         local elements = require('drex.elements')
         local path = vim.fn.expand("%:p")
@@ -65,6 +64,12 @@ wk.register({
         end
       end,
       "Drex"
+    },
+
+    r = {
+      name = "Replace",
+      p = { "<CMD>MurenToggle<CR>", "Resume previous" },
+      r = { "<CMD>MurenFresh<CR>", "New" },
     },
 
     t = {
