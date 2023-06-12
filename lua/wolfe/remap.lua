@@ -21,8 +21,6 @@ wk.register({
     q = { "<CMD>q<CR>", "Quit" },
     Q = { "<CMD>q!<CR>", "Force quit" },
     w = { "<CMD>w<CR>", "Write buffer" },
-    [">"] = { "<CMD>bnext<CR>", "Next buffer" },
-    ["<"] = { "<CMD>bprevious<CR>", "Previous buffer" },
 
     f = {
       name = "Fuzzy find",
