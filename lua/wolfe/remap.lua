@@ -26,11 +26,10 @@ wk.register({
 
     f = {
       name = "Fuzzy find",
-      f = { "<CMD>Telescope find_files<CR>", "File" },
-      g = { "<CMD>Telescope git_files<CR>", "Git recognized file" },
-      s = { "<CMD>Telescope live_grep<CR>", "String grep" },
-      b = { "<CMD>Telescope buffers<CR>", "Buffers" },
-      c = { "<CMD>Telescope current_buffer_fuzzy_find<CR>", "In current buffer" },
+      f = { "<CMD>FzfLua files<CR>", "File" },
+      l = { "<CMD>FzfLua live_grep<CR>", "Live grep" },
+      r = { "<CMD>FzfLua resume<CR>", "Resume grep" },
+      b = { "<CMD>FzfLua buffers<CR>", "Buffers" },
     },
 
     g = {
