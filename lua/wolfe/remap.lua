@@ -59,8 +59,8 @@ wk.register({
 
     r = {
       name = "Replace",
-      p = { "<CMD>MurenToggle<CR>", "Resume previous" },
-      r = { "<CMD>MurenFresh<CR>", "New" },
+      r = { "<CMD>MurenToggle<CR>", "Resume previous" },
+      n = { "<CMD>MurenFresh<CR>", "New" },
     },
 
     t = {
