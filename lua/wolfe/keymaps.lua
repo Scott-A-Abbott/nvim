@@ -12,6 +12,13 @@ local wkv = {}
 wkn["?"] = { "<CMD>WhichKey<CR>", "Keys" }
 wkv["?"] = { "<CMD>WhichKey<CR>", "Keys" }
 
+-- Window navigation
+wkn["<C-h>"] = { "<C-w>h", "Move to left window" }
+wkn["<C-j>"] = { "<C-w>j", "Move to down window" }
+wkn["<C-k>"] = { "<C-w>k", "Move to up window" }
+wkn["<C-l>"] = { "<C-w>l", "Move to right window" }
+wkn["<C-o>"] = { "<C-w>o", "Close all other windows" }
+
 wkn["<leader>"] = { name = "Space" }
 wkn["<leader>"]["q"] = { "<CMD>q<CR>", "Quit" }
 wkn["<leader>"]["Q"] = { "<CMD>q!<CR>", "Force quit" }
@@ -67,8 +74,8 @@ wkn["<leader>"]["t"]["q"] = { "<CMD>tabclose<CR>", "Close current" }
 wkn["<leader>"]["t"][">"] = { "<CMD>tabnext<CR>", "Next" }
 wkn["<leader>"]["t"]["<"] = { "<CMD>tabprevious<CR>", "Previous" }
 
-wk.register(wkn, { mode = "n" })
-wk.register(wkv, { mode = "v" })
+wk.register(wkn, { mode = "n", noremap = true })
+wk.register(wkv, { mode = "v", noremap = true })
 
 -- Drex
 local elements = require("drex.elements")
