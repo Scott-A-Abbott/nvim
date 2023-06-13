@@ -5,19 +5,18 @@ vim.api.nvim_set_keymap("n", "<C-u>", "<Plug>(VM-Add-Cursor-Up)", keymap_options
 
 -- Whichkey mappings
 local wk = require("which-key")
-local wkmap = {}
-wkmap["n"] = {}
-wkmap["v"] = {}
+local wkn = {}
+local wkv = {}
 
 -- Whichkey help
-wkmap["n"]["?"] = { "<CMD>WhichKey<CR>", "Keys" }
-wkmap["v"]["?"] = { "<CMD>WhichKey<CR>", "Keys" }
+wkn["?"] = { "<CMD>WhichKey<CR>", "Keys" }
+wkv["?"] = { "<CMD>WhichKey<CR>", "Keys" }
 
-wkmap["n"]["<leader>"] = { name = "Space" }
-wkmap["n"]["<leader>"]["q"] = { "<CMD>q<CR>", "Quit" }
-wkmap["n"]["<leader>"]["Q"] = { "<CMD>q!<CR>", "Force quit" }
-wkmap["n"]["<leader>"]["w"] = { "<CMD>w<CR>", "Write buffer" }
-wkmap["n"]["<leader>"]["d"] = {
+wkn["<leader>"] = { name = "Space" }
+wkn["<leader>"]["q"] = { "<CMD>q<CR>", "Quit" }
+wkn["<leader>"]["Q"] = { "<CMD>q!<CR>", "Force quit" }
+wkn["<leader>"]["w"] = { "<CMD>w<CR>", "Write buffer" }
+wkn["<leader>"]["d"] = {
   function()
     local drex = require('drex')
     local elements = require('drex.elements')
@@ -33,43 +32,43 @@ wkmap["n"]["<leader>"]["d"] = {
 }
 
 -- Fuzzy Find
-wkmap["n"]["<leader>"]["f"] = { name = "Fuzzy Find" }
-wkmap["n"]["<leader>"]["f"]["f"] = { "<CMD>FzfLua files<CR>", "File" }
-wkmap["n"]["<leader>"]["f"]["l"] = { "<CMD>FzfLua live_grep<CR>", "Live grep" }
-wkmap["n"]["<leader>"]["f"]["r"] = { "<CMD>FzfLua resume<CR>", "Resume grep" }
-wkmap["n"]["<leader>"]["f"]["b"] = { "<CMD>FzfLua buffers<CR>", "Buffers" }
+wkn["<leader>"]["f"] = { name = "Fuzzy Find" }
+wkn["<leader>"]["f"]["f"] = { "<CMD>FzfLua files<CR>", "File" }
+wkn["<leader>"]["f"]["l"] = { "<CMD>FzfLua live_grep<CR>", "Live grep" }
+wkn["<leader>"]["f"]["r"] = { "<CMD>FzfLua resume<CR>", "Resume grep" }
+wkn["<leader>"]["f"]["b"] = { "<CMD>FzfLua buffers<CR>", "Buffers" }
 
 -- Git
-wkmap["n"]["<leader>"]["g"] = { name = "Git" }
-wkmap["n"]["<leader>"]["g"]["o"] = { "<CMD>Neogit<CR>", "Open" }
-wkmap["n"]["<leader>"]["g"]["c"] = { "<CMD>Neogit commit<CR>", "Commit" }
-wkmap["n"]["<leader>"]["g"]["p"] = { "<CMD>Neogit pull<CR>", "Pull" }
-wkmap["n"]["<leader>"]["g"]["l"] = { "<CMD>Neogit log<CR>", "Log" }
+wkn["<leader>"]["g"] = { name = "Git" }
+wkn["<leader>"]["g"]["o"] = { "<CMD>Neogit<CR>", "Open" }
+wkn["<leader>"]["g"]["c"] = { "<CMD>Neogit commit<CR>", "Commit" }
+wkn["<leader>"]["g"]["p"] = { "<CMD>Neogit pull<CR>", "Pull" }
+wkn["<leader>"]["g"]["l"] = { "<CMD>Neogit log<CR>", "Log" }
 
 -- Split Window
-wkmap["n"]["<leader>"]["s"] = { name = "Split" }
-wkmap["n"]["<leader>"]["s"]["h"] = { "<CMD>split<CR>", "Horizontal" }
-wkmap["n"]["<leader>"]["s"]["v"] = { "<CMD>vsplit<CR>", "Vertical"}
+wkn["<leader>"]["s"] = { name = "Split" }
+wkn["<leader>"]["s"]["h"] = { "<CMD>split<CR>", "Horizontal" }
+wkn["<leader>"]["s"]["v"] = { "<CMD>vsplit<CR>", "Vertical"}
 
 -- Buffer
-wkmap["n"]["<leader>"]["b"] = { name = "Buffer" }
-wkmap["n"]["<leader>"]["b"]["d"] = { "<CMD>bd<CR>", "Delete" }
-wkmap["n"]["<leader>"]["b"]["s"] = { "<CMD>enew<CR>", "Scratch" }
+wkn["<leader>"]["b"] = { name = "Buffer" }
+wkn["<leader>"]["b"]["d"] = { "<CMD>bd<CR>", "Delete" }
+wkn["<leader>"]["b"]["s"] = { "<CMD>enew<CR>", "Scratch" }
 
 -- Replace
-wkmap["n"]["<leader>"]["r"] = { name = "Replace" }
-wkmap["n"]["<leader>"]["r"]["r"] = { "<CMD>MurenToggle<CR>", "Resume previous" }
-wkmap["n"]["<leader>"]["r"]["n"] = { "<CMD>MurenFresh<CR>", "New" }
+wkn["<leader>"]["r"] = { name = "Replace" }
+wkn["<leader>"]["r"]["r"] = { "<CMD>MurenToggle<CR>", "Resume previous" }
+wkn["<leader>"]["r"]["n"] = { "<CMD>MurenFresh<CR>", "New" }
 
 -- Tab
-wkmap["n"]["<leader>"]["t"] = { name = "Tab" }
-wkmap["n"]["<leader>"]["t"]["n"] = { "<CMD>tabnew<CR>", "New" }
-wkmap["n"]["<leader>"]["t"]["q"] = { "<CMD>tabclose<CR>", "Close current" }
-wkmap["n"]["<leader>"]["t"][">"] = { "<CMD>tabnext<CR>", "Next" }
-wkmap["n"]["<leader>"]["t"]["<"] = { "<CMD>tabprevious<CR>", "Previous" }
+wkn["<leader>"]["t"] = { name = "Tab" }
+wkn["<leader>"]["t"]["n"] = { "<CMD>tabnew<CR>", "New" }
+wkn["<leader>"]["t"]["q"] = { "<CMD>tabclose<CR>", "Close current" }
+wkn["<leader>"]["t"][">"] = { "<CMD>tabnext<CR>", "Next" }
+wkn["<leader>"]["t"]["<"] = { "<CMD>tabprevious<CR>", "Previous" }
 
-wk.register(wkmap["n"], { mode = "n" })
-wk.register(wkmap["v"], { mode = "v" })
+wk.register(wkn, { mode = "n" })
+wk.register(wkv, { mode = "v" })
 
 -- Drex
 local elements = require("drex.elements")
