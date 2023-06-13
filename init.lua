@@ -15,4 +15,4 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins")
 require("wolfe")
-require("wolfe.remap")
+require("wolfe.keymaps")
