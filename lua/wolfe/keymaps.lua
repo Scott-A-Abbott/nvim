@@ -48,6 +48,15 @@ wkn["<leader>"]["d"] = {
   "Drex"
 }
 
+-- Harpoon
+local harpoon_ui = require("harpoon.ui")
+local harpoon_mark = require("harpoon.mark")
+
+wkn["<leader>"]["h"] = { harpoon_ui.toggle_quick_menu, "Harpoon toggle" }
+wkn["<leader>"]["m"] = { harpoon_mark.add_file, "Harpoon mark" }
+wkn["<S-l>"] = { harpoon_ui.nav_next, "Harpoon next" }
+wkn["<S-h>"] = { harpoon_ui.nav_prev, "Harpoon prev" }
+
 -- Fuzzy Find
 wkn["<leader>"]["f"] = { name = "Fuzzy Find" }
 wkn["<leader>"]["f"]["f"] = { "<CMD>FzfLua files<CR>", "File" }
