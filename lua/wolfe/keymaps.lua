@@ -9,8 +9,18 @@ local wkn = {}
 local wkv = {}
 
 -- Whichkey help
-wkn["?"] = { "<CMD>WhichKey<CR>", "Keys" }
-wkv["?"] = { "<CMD>WhichKey<CR>", "Keys" }
+local help = { "<CMD>WhichKey<CR>", "Keys" }
+wkn["?"] = help
+wkv["?"] = help
+
+-- Line navigation
+local next_empty = { "}", "Next empty line" }
+wkn["<S-j>"] = next_empty
+wkv["<S-j>"] = next_empty
+
+local prev_empty = { "{", "Previous empty line" }
+wkn["<S-k>"] = prev_empty
+wkv["<S-k>"] = prev_empty
 
 -- Window navigation
 wkn["<C-h>"] = { "<C-w>h", "Move to left window" }
