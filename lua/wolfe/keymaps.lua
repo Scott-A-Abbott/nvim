@@ -96,6 +96,21 @@ wkn["<leader>"]["t"]["<"] = { "<CMD>tabprevious<CR>", "Previous" }
 wk.register(wkn, { mode = "n", noremap = true })
 wk.register(wkv, { mode = "v", noremap = true })
 
+-- LSP
+wkn[';'] = { name = "LSP" }
+wkn[';']['a'] = { vim.lsp.buf.code_action, "Code action" }
+wkn[';']['d'] = { vim.lsp.buf.definition, "Go to definition" }
+wkn[';']['D'] = { vim.lsp.buf.declaration, "Go to declaration" }
+wkn[';']['i'] = { vim.lsp.buf.implementation, "List implementations" }
+wkn[';']['h'] = { vim.lsp.buf.hover, "Code hover" }
+wkn[';']['n'] = { vim.lsp.buf.rename, "Rename" }
+wkn[';']['r'] = { vim.lsp.buf.references, "List references" }
+wkn[';']['t'] = { vim.lsp.buf.type_definition, "Type definition" }
+wkn[';']['f'] = { vim.lsp.buf.formatting, "Formatting" }
+wkn[';']['e'] = { vim.diagnostic.open_float, "Open float" }
+wkn[';']['['] = { vim.diagnostic.goto_prev, "Go to previous diagnostic" }
+wkn[';'][']'] = { vim.diagnostic.goto_next, "Go to next diagnostic" }
+
 -- Drex
 local elements = require("drex.elements")
 local drex_utils = require("drex.utils")
