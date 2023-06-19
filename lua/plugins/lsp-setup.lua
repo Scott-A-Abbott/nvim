@@ -16,10 +16,6 @@ return {
     require('lsp-setup').setup({
       default_mappings = false,
       servers = {
-        bashls = {},
-        cssls = {},
-        jsonls = {},
-        tsserver = {},
         lua_ls = {
           settings = {
             Lua = {
@@ -30,9 +26,7 @@ return {
           },
         },
         marksman = {},
-        standardrb = {},
-        taplo = {},
-        yamlls = {},
+        solargraph = {},
         rust_analyzer = {}
       }
     })
