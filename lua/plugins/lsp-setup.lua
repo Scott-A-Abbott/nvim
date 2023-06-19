@@ -26,7 +26,6 @@ return {
           },
         },
         marksman = {},
-        solargraph = {},
         rust_analyzer = {}
       }
     })
