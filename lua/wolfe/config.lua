@@ -8,12 +8,10 @@ if is_dir == 1 then
   drex.open_directory_buffer()
 end
 
-vim.opt.spell = true
-vim.g.spelllang = "en_us"
-
 -- Set yank to use clipboard by default
 vim.cmd [[set clipboard+=unnamedplus]]
 
+local api = vim.api
 local set = vim.opt
 local gset = vim.g
 local wset = vim.wo
@@ -27,6 +25,10 @@ wset.number = true
 -- gset.loaded_netrw = 1
 -- gset.gloaded_netrwPlugin = 1
 
+-- Spellcheck
+set.spell = true
+gset.spelllang = "en_us"
+
 -- For Which-Key timeout
 set.timeoutlen = 250
 
@@ -38,3 +40,24 @@ set.expandtab = true
 
 -- Enable mouse functionality
 set.mouse = "a"
+
+-- Split behaviour
+set.splitbelow = true
+set.splitright = true
+
+-- Dont show mode since we have a statusline
+set.showmode = false
+
+-- Set terminal title
+set.title = true
+
+local function current_directory()
+  return vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
+end
+
+api.nvim_create_autocmd({ "BufEnter" }, {
+  group = api.nvim_create_augroup("wolfe_title" , { clear = true }),
+  callback = function()
+    set.titlestring = current_directory()
+  end
+})
