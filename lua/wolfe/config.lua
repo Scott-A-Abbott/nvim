@@ -16,12 +16,6 @@ local wset = vim.wo
 -- Enable line numbers
 wset.number = true
 
--- ## Netrw has some builtin functionality for buffers, too
--- ## Leave it in until it is a problem
--- Disable default file explorer
--- gset.loaded_netrw = 1
--- gset.gloaded_netrwPlugin = 1
-
 -- Spellcheck
 set.spell = true
 gset.spelllang = "en_us"
