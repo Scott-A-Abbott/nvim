@@ -8,9 +8,6 @@ if is_dir == 1 then
   drex.open_directory_buffer()
 end
 
--- Set yank to use clipboard by default
-vim.cmd [[set clipboard+=unnamedplus]]
-
 local api = vim.api
 local set = vim.opt
 local gset = vim.g

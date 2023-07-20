@@ -29,7 +29,9 @@ wkn["<C-k>"] = { "<C-w>k", "Move to up window" }
 wkn["<C-l>"] = { "<C-w>l", "Move to right window" }
 wkn["<C-o>"] = { "<C-w>o", "Close all other windows" }
 
+-- Leader convenience
 wkn["<leader>"] = { name = "Space" }
+wkv["<leader>"] = { name = "Space" }
 wkn["<leader>"]["q"] = { "<CMD>q<CR>", "Quit" }
 wkn["<leader>"]["Q"] = { "<CMD>q!<CR>", "Force quit" }
 wkn["<leader>"]["w"] = { "<CMD>w<CR>", "Write buffer" }
@@ -47,6 +49,14 @@ wkn["<leader>"]["d"] = {
   end,
   "Drex"
 }
+
+local paste = { "\"+p", "Paste from system clipboard" }
+wkn["<leader>"]["p"] = paste
+wkv["<leader>"]["p"] = paste
+
+local yank = { "\"+y", "Yank to system clipboard" }
+wkn["<leader>"]["y"] = yank
+wkv["<leader>"]["y"] = yank
 
 -- Harpoon
 local harpoon_ui = require("harpoon.ui")
