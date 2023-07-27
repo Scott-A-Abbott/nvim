@@ -14,13 +14,31 @@ wkn["?"] = help
 wkv["?"] = help
 
 -- Line navigation
-local next_empty = { "}", "Next empty line" }
+local next_empty = { "10j", "10 lines down" }
 wkn["<S-j>"] = next_empty
 wkv["<S-j>"] = next_empty
 
-local prev_empty = { "{", "Previous empty line" }
+local prev_empty = { "10k", "10 lines up" }
 wkn["<S-k>"] = prev_empty
 wkv["<S-k>"] = prev_empty
+
+local end_of_line = { "$", "End of line" }
+wkn["<S-l>"] = end_of_line
+wkv["<S-l>"] = end_of_line
+
+
+local start_of_line = { "^", "Start of line" }
+wkn["<S-h>"] = start_of_line
+wkv["<S-h>"] = start_of_line
+
+-- Yank override
+wkn["y"] = {}
+
+local yank_end_of_line = { "y$", "End of line" }
+wkn["y"]["<S-l>"] = yank_end_of_line
+
+local yank_start_of_line = { "y^", "Start of line" }
+wkn["y"]["<S-h>"] = yank_start_of_line
 
 -- Window navigation
 wkn["<C-h>"] = { "<C-w>h", "Move to left window" }
@@ -64,8 +82,9 @@ local harpoon_mark = require("harpoon.mark")
 
 wkn["<leader>"]["h"] = { harpoon_ui.toggle_quick_menu, "Harpoon toggle" }
 wkn["<leader>"]["m"] = { harpoon_mark.add_file, "Harpoon mark" }
-wkn["<S-l>"] = { harpoon_ui.nav_next, "Harpoon next" }
-wkn["<S-h>"] = { harpoon_ui.nav_prev, "Harpoon prev" }
+-- ## Verify what these mappings are on windows/linux
+wkn["˙"] = { harpoon_ui.nav_next, "Harpoon next" }
+wkn["¬"] = { harpoon_ui.nav_prev, "Harpoon prev" }
 
 -- Fuzzy Find
 wkn["<leader>"]["f"] = { name = "Fuzzy Find" }
