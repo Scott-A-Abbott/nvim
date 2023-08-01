@@ -100,6 +100,19 @@ wkn["<leader>"]["g"]["c"] = { "<CMD>Neogit commit<CR>", "Commit" }
 wkn["<leader>"]["g"]["p"] = { "<CMD>Neogit pull<CR>", "Pull" }
 wkn["<leader>"]["g"]["l"] = { "<CMD>Neogit log<CR>", "Log" }
 
+-- Flash
+wkn["<leader>"]["j"] = { name = "Flash Jump" }
+wkn["<leader>"]["j"]["l"] = {
+  function()
+    require("flash").jump({
+      search = { mode = "search", max_length = 0 },
+      label = { after = { 0, 0 } },
+      pattern = "^"
+    })
+  end,
+  "Start of line"
+}
+
 -- Split Window
 wkn["<leader>"]["s"] = { name = "Split" }
 wkn["<leader>"]["s"]["h"] = { "<CMD>split<CR>", "Horizontal" }
