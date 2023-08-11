@@ -101,8 +101,8 @@ wkn["<leader>"]["g"]["p"] = { "<CMD>Neogit pull<CR>", "Pull" }
 wkn["<leader>"]["g"]["l"] = { "<CMD>Neogit log<CR>", "Log" }
 
 -- Flash
-wkn["<leader>"]["j"] = { name = "Flash Jump" }
-wkn["<leader>"]["j"]["l"] = {
+local flash = { name = "Flash Jump" }
+local flash_line_jump = {
   function()
     require("flash").jump({
       search = { mode = "search", max_length = 0 },
@@ -112,6 +112,12 @@ wkn["<leader>"]["j"]["l"] = {
   end,
   "Start of line"
 }
+
+wkn["<leader>"]["j"] = flash
+wkn["<leader>"]["j"]["l"] = flash_line_jump
+
+wkv["<leader>"]["j"] = flash
+wkv["<leader>"]["j"]["l"] = flash_line_jump
 
 -- Split Window
 wkn["<leader>"]["s"] = { name = "Split" }
