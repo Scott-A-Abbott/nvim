@@ -176,9 +176,8 @@ dmap["n"]["<CR>"] = function()
     elements.expand_element()
   end
 end
-
 -- CD down
-dmap["n"]["J"] = function()
+dmap["n"]["∆"] = function()
   local line = vim.api.nvim_get_current_line()
 
   local path
@@ -193,7 +192,7 @@ dmap["n"]["J"] = function()
 end
 
 -- CD up
-dmap["n"]["K"] = function()
+dmap["n"]["˚"] = function()
   elements.open_parent_directory()
   -- This could be wrong. Is there a chance it sets a different directory than intended?
   vim.api.nvim_set_current_dir("..")
