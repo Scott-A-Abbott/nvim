@@ -52,3 +52,9 @@ api.nvim_create_autocmd({ "BufEnter" }, {
     set.titlestring = current_directory()
   end
 })
+
+-- Auto trim trailing white space
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = { "*" },
+  command = [[%s/\s\+$//e]],
+})
