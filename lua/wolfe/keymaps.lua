@@ -204,6 +204,9 @@ dmap["n"]["q"] = function()
   vim.api.nvim_buf_delete(handle, { force = true })
 end
 
+-- Search
+dmap["n"]["/"] = "/"
+
 drex_config.configure {
   keybindings = dmap
 }
