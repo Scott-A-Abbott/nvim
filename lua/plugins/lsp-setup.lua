@@ -1,5 +1,6 @@
 return {
   'junnplus/lsp-setup.nvim',
+  lazy = false,
 
   dependencies = {
     'neovim/nvim-lspconfig',
