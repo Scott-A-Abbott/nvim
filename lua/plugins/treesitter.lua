@@ -3,7 +3,7 @@ return {
   lazy = false,
   config = function()
     require "nvim-treesitter.configs".setup {
-      ensure_installed = { "markdown", "scss", "lua", "ruby", "rust" },
+      ensure_installed = { "markdown", "markdown_inline", "scss", "lua", "ruby", "rust" },
 
       -- Install parsers synchronously (only applied to `ensure_installed`)
       sync_install = false,
