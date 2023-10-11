@@ -207,6 +207,10 @@ end
 -- Search
 dmap["n"]["/"] = "/"
 
+-- Window navigation
+dmap["n"]["<C-h>"] = "<C-w>h"
+dmap["n"]["<C-l>"] = "<C-w>l"
+
 drex_config.configure {
   keybindings = dmap
 }
