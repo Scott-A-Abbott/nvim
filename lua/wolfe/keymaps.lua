@@ -101,23 +101,44 @@ wkn["<leader>"]["g"]["p"] = { "<CMD>Neogit pull<CR>", "Pull" }
 wkn["<leader>"]["g"]["l"] = { "<CMD>Neogit log<CR>", "Log" }
 
 -- Flash
-local flash = { name = "Flash Jump" }
+local flash = require("flash")
+
 local flash_line_jump = {
   function()
-    require("flash").jump({
+    flash.jump({
       search = { mode = "search", max_length = 0 },
       label = { after = { 0, 0 } },
       pattern = "^"
     })
   end,
-  "Start of line"
+  "Flash line"
 }
 
-wkn["<leader>"]["j"] = flash
-wkn["<leader>"]["j"]["l"] = flash_line_jump
+local flash_forwards = {
+  function()
+    flash.jump({
+      search = { forward = true, wrap = false, multi_window = false },
+    })
+  end,
+  "Flash forwards"
+}
 
-wkv["<leader>"]["j"] = flash
-wkv["<leader>"]["j"]["l"] = flash_line_jump
+local flash_backwards = {
+  function()
+    flash.jump({
+      search = { forward = false, wrap = false, multi_window = false },
+    })
+  end,
+  "Flash backwards"
+}
+
+wkn["<leader>"]["l"] = flash_line_jump
+wkn["<leader>"]["/"] = flash_forwards
+wkn["<leader>"]["?"] = flash_backwards
+
+wkv["<leader>"]["l"] = flash_line_jump
+wkv["<leader>"]["/"] = flash_forwards
+wkv["<leader>"]["?"] = flash_backwards
 
 -- Split Window
 wkn["<leader>"]["s"] = { name = "Split" }
