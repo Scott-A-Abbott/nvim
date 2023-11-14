@@ -130,9 +130,14 @@ wkn["<leader>"]["b"]["d"] = { "<CMD>bd<CR>", "Delete" }
 wkn["<leader>"]["b"]["s"] = { "<CMD>enew<CR>", "Scratch" }
 
 -- Replace
+local spectre = require('spectre')
+
 wkn["<leader>"]["r"] = { name = "Replace" }
-wkn["<leader>"]["r"]["r"] = { "<CMD>MurenToggle<CR>", "Resume previous" }
-wkn["<leader>"]["r"]["n"] = { "<CMD>MurenFresh<CR>", "New" }
+wkn["<leader>"]["r"]["o"] = { function() spectre.open() end, "Open" }
+wkn["<leader>"]["r"]["r"] = { function()
+  spectre.open()
+  spectre.resume_last_search()
+end, "Resume" }
 
 -- Tab
 wkn["<leader>"]["t"] = { name = "Tab" }
