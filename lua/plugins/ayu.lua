@@ -15,6 +15,7 @@ return {
         CursorLineNr = { fg = "#FFCC66" },
         WhichKeyFloat = { bg = "#333C52" },
         Comment = { fg = "#8691A3" },
+        TreesitterContext = { bg = "#333C52" },
       }, -- A dictionary of group names, each associated with a dictionary of parameters (`bg`, `fg`, `sp` and `style`) and colors in hex.
     })
 
