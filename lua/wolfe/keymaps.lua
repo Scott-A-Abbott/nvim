@@ -2,6 +2,8 @@
 local keymap_options = { noremap = true }
 vim.api.nvim_set_keymap("n", "<C-d>", "<Plug>(VM-Add-Cursor-Down)", keymap_options)
 vim.api.nvim_set_keymap("n", "<C-u>", "<Plug>(VM-Add-Cursor-Up)", keymap_options)
+vim.api.nvim_set_keymap("n", "<C-f>", "<Plug>(VM-Add-Cursor-At-Word)", keymap_options)
+vim.api.nvim_set_keymap("v", "<C-f>", "<Plug>(VM-Find-Subword-Under)", keymap_options)
 
 -- Whichkey mappings
 local wk = require("which-key")
@@ -69,12 +71,12 @@ wkn["<leader>"]["d"] = {
 }
 
 local paste = { "\"+p", "Paste from system clipboard" }
-wkn["<leader>"]["p"] = paste
-wkv["<leader>"]["p"] = paste
+wkn["<leader>"]["v"] = paste
+wkv["<leader>"]["v"] = paste
 
-local yank = { "\"+y", "Yank to system clipboard" }
-wkn["<leader>"]["y"] = yank
-wkv["<leader>"]["y"] = yank
+local copy = { "\"+y", "Copy to system clipboard" }
+wkn["<leader>"]["c"] = copy
+wkv["<leader>"]["c"] = copy
 
 -- Harpoon
 local harpoon_ui = require("harpoon.ui")
@@ -83,8 +85,8 @@ local harpoon_mark = require("harpoon.mark")
 wkn["<leader>"]["h"] = { harpoon_ui.toggle_quick_menu, "Harpoon toggle" }
 wkn["<leader>"]["m"] = { harpoon_mark.add_file, "Harpoon mark" }
 -- ## Verify what these mappings are on windows/linux
-wkn["˙"] = { harpoon_ui.nav_next, "Harpoon next" }
-wkn["¬"] = { harpoon_ui.nav_prev, "Harpoon prev" }
+wkn["<leader>"][">"] = { harpoon_ui.nav_next, "Harpoon next" }
+wkn["<leader>"]["<"] = { harpoon_ui.nav_prev, "Harpoon prev" }
 
 -- Fuzzy Find
 wkn["<leader>"]["f"] = { name = "Fuzzy Find" }
@@ -141,9 +143,9 @@ wkv["<leader>"]["/"] = flash_forwards
 wkv["<leader>"]["?"] = flash_backwards
 
 -- Split Window
-wkn["<leader>"]["s"] = { name = "Split" }
-wkn["<leader>"]["s"]["h"] = { "<CMD>split<CR>", "Horizontal" }
-wkn["<leader>"]["s"]["v"] = { "<CMD>vsplit<CR>", "Vertical"}
+wkn["<leader>"]["p"] = { name = "Pane" }
+wkn["<leader>"]["p"]["d"] = { "<CMD>split<CR>", "Down" }
+wkn["<leader>"]["p"]["r"] = { "<CMD>vsplit<CR>", "Right"}
 
 -- Buffer
 wkn["<leader>"]["b"] = { name = "Buffer" }

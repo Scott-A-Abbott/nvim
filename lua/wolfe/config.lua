@@ -53,8 +53,20 @@ api.nvim_create_autocmd({ "BufEnter" }, {
   end
 })
 
+api.nvim_create_autocmd({ "BufEnter" }, {
+  group = api.nvim_create_augroup("zellij_tab", { clear = true }),
+  callback = function()
+    vim.cmd(string.format("silent !zellij action rename-tab %s", current_directory()))
+  end
+})
+
 -- Auto trim trailing white space
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = { "*" },
   command = [[%s/\s\+$//e]],
+})
+
+-- Diagnostic config
+vim.diagnostic.config({
+  virtual_text = false,
 })
