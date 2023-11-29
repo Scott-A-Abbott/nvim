@@ -227,10 +227,7 @@ dmap["n"]["˚"] = function()
 end
 
 -- Quit
-dmap["n"]["q"] = function()
-  local handle = vim.api.nvim_get_current_buf()
-  vim.api.nvim_buf_delete(handle, { force = true })
-end
+dmap["n"]["q"] = "<CMD>b# <BAR> bd#<CR>"
 
 -- Search
 dmap["n"]["/"] = "/"
