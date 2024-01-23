@@ -53,7 +53,8 @@ wkn["<C-o>"] = { "<C-w>o", "Close all other windows" }
 wkn["<leader>"] = { name = "Space" }
 wkv["<leader>"] = { name = "Space" }
 wkn["<leader>"]["q"] = { "<CMD>q<CR>", "Quit" }
-wkn["<leader>"]["Q"] = { "<CMD>q!<CR>", "Force quit" }
+wkn["<leader>"]["Q"] = { "<CMD>qall<CR>", "Quit all" }
+wkn["<leader>"]["!"] = { "<CMD>q!<CR>", "Force quit" }
 wkn["<leader>"]["w"] = { "<CMD>w<CR>", "Write buffer" }
 wkn["<leader>"]["d"] = { "<CMD>Oil<CR>", "Directory" }
 
