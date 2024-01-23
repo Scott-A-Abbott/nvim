@@ -15,7 +15,6 @@ return {
     local git_blame = require('gitblame')
 
     require "lualine".setup({
-      extensions = { "nvim-tree", "drex" },
       options = { theme = "ayu" },
       sections = {
         lualine_a = { 'mode' },
