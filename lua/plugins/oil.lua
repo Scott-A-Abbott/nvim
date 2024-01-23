@@ -13,6 +13,12 @@ return {
       ["-"] = "actions.parent",
       ["_"] = "actions.open_cwd",
       -- ["`"] = "actions.cd",
+      ["`"] = function()
+        require("oil.actions").cd.callback()
+
+        local current_dir = vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
+        vim.cmd(string.format("silent !zellij action rename-tab %s", current_dir))
+      end
       -- ["~"] = "actions.tcd",
   },
   -- Set to false to disable all of the above keymaps
