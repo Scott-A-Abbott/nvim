@@ -3,6 +3,19 @@ return {
   opts = {
     keymaps = {
       ["q"] = "actions.close",
+      ["Y"] = function()
+        local oil = require("oil")
+        local entry = oil.get_cursor_entry()
+        local current_dir = oil.get_current_dir()
+
+        if not entry or not current_dir then
+          return
+        end
+
+        -- Get relative path to current_dir from cwd
+        local path = vim.fn.fnamemodify(current_dir, ':.')
+        vim.fn.setreg("+", path .. entry.name)
+      end,
       ["g?"] = "actions.show_help",
       ["gp"] = "actions.preview",
       ["gr"] = "actions.refresh",
