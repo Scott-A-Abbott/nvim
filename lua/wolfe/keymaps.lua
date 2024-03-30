@@ -157,9 +157,6 @@ wkn["<leader>"]["t"]["q"] = { "<CMD>tabclose<CR>", "Close current" }
 wkn["<leader>"]["t"][">"] = { "<CMD>tabnext<CR>", "Next" }
 wkn["<leader>"]["t"]["<"] = { "<CMD>tabprevious<CR>", "Previous" }
 
-wk.register(wkn, { mode = "n", noremap = true })
-wk.register(wkv, { mode = "v", noremap = true })
-
 -- LSP
 wkn[';'] = { name = "LSP" }
 wkn[';']['a'] = { vim.lsp.buf.code_action, "Code action" }
@@ -174,3 +171,40 @@ wkn[';']['f'] = { vim.lsp.buf.formatting, "Formatting" }
 wkn[';']['e'] = { vim.diagnostic.open_float, "Open float" }
 wkn[';']['['] = { vim.diagnostic.goto_prev, "Go to previous diagnostic" }
 wkn[';'][']'] = { vim.diagnostic.goto_next, "Go to next diagnostic" }
+
+-- Casing
+local textcase = require("textcase")
+
+wkn["C"] = { name = "Casing" }
+wkv["C"] = { name = "Casing" }
+
+wkn["C"]['_'] = { function() textcase.current_word("to_snake_case") end, "snake_case" }
+wkv["C"]['_'] = { function() textcase.operator("to_snake_case") end, "snake_case" }
+
+wkn["C"]['-'] = { function() textcase.current_word("to_dash_case") end, "dash-case" }
+wkv["C"]['-'] = { function() textcase.operator("to_dash_case") end, "dash-case" }
+
+wkn["C"]['c'] = { function() textcase.current_word("to_camel_case") end, "camelCase" }
+wkv["C"]['c'] = { function() textcase.operator("to_camel_case") end, "camelCase" }
+
+wkn["C"]['C'] = { function() textcase.current_word("to_constant_case") end, "CONSTANT_CASE" }
+wkv["C"]['C'] = { function() textcase.operator("to_constant_case") end, "CONSTANT_CASE" }
+
+wkn["C"]['l'] = { function() textcase.current_word("to_lower_case") end, "lower case" }
+wkv["C"]['l'] = { function() textcase.operator("to_lower_case") end, "lower case" }
+
+wkn["C"]['p'] = { function() textcase.current_word("to_pascal_case") end, "PascalCase" }
+wkv["C"]['p'] = { function() textcase.operator("to_pascal_case") end, "PascalCase" }
+
+wkn["C"]['s'] = { function() textcase.current_word("to_phrase_case") end, "Sentence case" }
+wkv["C"]['s'] = { function() textcase.operator("to_phrase_case") end, "Sentence case" }
+
+wkn["C"]['t'] = { function() textcase.current_word("to_title_case") end, "Title Case" }
+wkv["C"]['t'] = { function() textcase.operator("to_title_case") end, "Title Case" }
+
+wkn["C"]['u'] = { function() textcase.current_word("to_upper_case") end, "UPPER CASE" }
+wkv["C"]['u'] = { function() textcase.operator("to_upper_case") end, "UPPER CASE" }
+
+-- Register mappings
+wk.register(wkn, { mode = "n", noremap = true })
+wk.register(wkv, { mode = "v", noremap = true })
