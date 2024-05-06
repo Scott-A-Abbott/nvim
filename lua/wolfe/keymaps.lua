@@ -205,6 +205,10 @@ wkv["C"]['t'] = { function() textcase.operator("to_title_case") end, "Title Case
 wkn["C"]['u'] = { function() textcase.current_word("to_upper_case") end, "UPPER CASE" }
 wkv["C"]['u'] = { function() textcase.operator("to_upper_case") end, "UPPER CASE" }
 
+-- Treesitter context
+wkn["<leader>"]["t"] = { name = "Treesitter" }
+wkn["<leader>"]["t"]["c"] = { "<CMD>TSContextToggle<CR>", "Context" }
+
 -- Register mappings
 wk.register(wkn, { mode = "n", noremap = true })
 wk.register(wkv, { mode = "v", noremap = true })
