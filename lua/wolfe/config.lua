@@ -46,7 +46,7 @@ api.nvim_create_autocmd({ "BufEnter" }, {
 api.nvim_create_autocmd({ "BufEnter" }, {
   group = api.nvim_create_augroup("zellij_tab", { clear = true }),
   callback = function()
-    vim.cmd(string.format("silent !zellij action rename-tab %s", current_directory()))
+    -- vim.cmd(string.format("silent !zellij action rename-tab %s", current_directory()))
   end
 })
 
