@@ -134,6 +134,7 @@ wkv["<leader>"]["?"] = flash_backwards
 wkn["<leader>"]["p"] = { name = "Pane" }
 wkn["<leader>"]["p"]["d"] = { "<CMD>split<CR>", "Down" }
 wkn["<leader>"]["p"]["r"] = { "<CMD>vsplit<CR>", "Right"}
+wkn["<leader>"]["p"]["f"] = { "<CMD>tab split<CR>", "Fullscreen"}
 
 -- Buffer
 wkn["<leader>"]["b"] = { name = "Buffer" }
