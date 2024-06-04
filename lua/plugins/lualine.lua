@@ -17,7 +17,13 @@ return {
     local git_blame = require("gitblame")
 
     require "lualine".setup({
-      options = { theme = "ayu" },
+      options = {
+        theme = "ayu",
+        globalstatus = true,
+        refresh = {
+          statusline = 300,
+        }
+      },
       sections = {
         lualine_a = { "mode" },
         lualine_b = { current_directory },
@@ -25,8 +31,14 @@ return {
         lualine_x = {
           { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available }
         },
-        lualine_y = {"branch"},
-        lualine_z = {"location"}
+        lualine_y = { "branch" },
+        lualine_z = { "progress" },
+      },
+      winbar = {
+        lualine_c = { "filename" },
+      },
+      inactive_winbar = {
+        lualine_c = { "filename" },
       },
     })
   end
