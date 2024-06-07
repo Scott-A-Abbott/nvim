@@ -27,7 +27,8 @@ return {
           },
         },
         marksman = {},
-        rust_analyzer = {}
+        rust_analyzer = {},
+        typos_lsp = {}
       }
     })
   end,
