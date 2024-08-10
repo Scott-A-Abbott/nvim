@@ -29,7 +29,7 @@ local leader = {
   { "<leader>w", "<CMD>w<CR>", desc = "Write buffer" },
   -- Clipboard
   { "<leader>v", "\"+p", desc = "Paste from system clipboard", mode = nv },
-  { "<leader>v", "\"+y", desc = "Copy to system clipboard", mode = nv },
+  { "<leader>c", "\"+y", desc = "Copy to system clipboard", mode = nv },
   -- Split Window
   { "<leader>p", group = "Pane" },
   { "<leader>pd", "<CMD>split<CR>", desc = "Down" },
