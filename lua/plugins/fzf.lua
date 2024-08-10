@@ -1,7 +1,15 @@
 return {
   'ibhagwan/fzf-lua',
   config = function()
-    require("fzf-lua").register_ui_select()
+    fzf = require("fzf-lua")
+
+    fzf.setup({
+      keymap = {
+        fzf = { ["alt-a"] = "select-all+accept" }
+      }
+    })
+
+    fzf.register_ui_select()
 
     require("which-key").add({
       { "<leader>f", group = "Fuzzy Find" },
