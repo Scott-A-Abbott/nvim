@@ -1,14 +1,12 @@
 return {
   'junnplus/lsp-setup.nvim',
   lazy = false,
-
   dependencies = {
     'neovim/nvim-lspconfig',
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'simrat39/rust-tools.nvim',
   },
-
   config = function()
     require("mason").setup()
     require("mason-lspconfig").setup()
