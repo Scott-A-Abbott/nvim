@@ -1,10 +1,17 @@
 return {
   "TimUntersberger/neogit",
-  dependencies = {"nvim-lua/plenary.nvim", "sindrets/diffview.nvim"},
+  dependencies = {"nvim-lua/plenary.nvim", "sindrets/diffview.nvim" },
   config = function()
     require("neogit").setup({
-      integrations = { diffview = true },
-      mappings = { status = { ["gk"] = "Untrack", ["K"] = false } }
+      integrations = {
+        diffview = true,
+        fzf_lua = true,
+      },
+      mappings = { status = { ["gk"] = "Untrack", ["K"] = false } },
+      commit_editor = {
+        kind = "vsplit",
+      },
+      disable_insert_on_commit = true,
     })
 
     require("which-key").add({
