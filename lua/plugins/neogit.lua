@@ -11,7 +11,6 @@ return {
       commit_editor = {
         kind = "vsplit",
       },
-      disable_insert_on_commit = true,
     })
 
     require("which-key").add({
