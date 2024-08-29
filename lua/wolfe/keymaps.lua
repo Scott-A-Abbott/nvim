@@ -30,11 +30,12 @@ local leader = {
   -- Clipboard
   { "<leader>v", "\"+p", desc = "Paste from system clipboard", mode = nv },
   { "<leader>c", "\"+y", desc = "Copy to system clipboard", mode = nv },
-  -- Split Window
+  -- Pane
   { "<leader>p", group = "Pane" },
   { "<leader>pd", "<CMD>split<CR>", desc = "Down" },
   { "<leader>pr", "<CMD>vsplit<CR>", desc = "Right" },
   { "<leader>pf", "<CMD>tab split<CR>", desc = "Fullscreen" },
+  { "<leader>po", "<CMD>only<CR>", desc = "Close all others" },
   -- Buffer
   { "<leader>b", group = "Buffer" },
   { "<leader>bd", "<CMD>bd<CR>", desc = "Delete" },
