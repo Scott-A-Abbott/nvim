@@ -7,6 +7,8 @@ return {
     buffer_leader_key = "m", -- Per Buffer Mappings
     index_keys = "123456789zxcbnmZXVBNM,afghjklAFGHJKLwrtyuiopWRTYUIOP", -- Update this
     mappings = {
+      open_vertical = "r",
+      open_horizontal = "d",
       next_item = ">",
       prev_item = "<"
     }
