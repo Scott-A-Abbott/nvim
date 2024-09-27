@@ -13,6 +13,7 @@ return {
       { "<C-u>", function() mc.addCursor("k") end, desc = "Add cursor down" },
       { "<C-f>", function() mc.addCursor("*") end, desc = "Add a cursor and jump to next word" },
       { "<C-a>", function() mc.skipCursor("*") end, desc = "Jump to next word under cursor" },
+      { "<C-m>", function() mc.matchCursors() end, desc = "Match and add cursors", mode = "v" },
       noremap = true
     })
 
