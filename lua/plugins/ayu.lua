@@ -17,7 +17,8 @@ return {
         Comment = { fg = "#8691A3" },
         TreesitterContext = { bg = "#333C52" },
         NormalNC = {bg = '#191d26', fg = '#CBCCC6'},
-        SpellBad = { fg = "#f20404" }
+        SpellBad = { fg = "#f20404" },
+        Visual = { bg = "#333C52" }
       }, -- A dictionary of group names, each associated with a dictionary of parameters (`bg`, `fg`, `sp` and `style`) and colors in hex.
     })
 
