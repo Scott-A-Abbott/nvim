@@ -63,11 +63,16 @@ local lsp = {
   { ";]", vim.lsp.buf.goto_next, desc = "Go to next diagnostic" },
 }
 
+local highlight = {
+  { "gh", "<CMD>noh<CR>", desc = "Clear last search highlight", mode = nv }
+}
+
 require("which-key").add({
   leader,
   line_navigation,
   window_navigation,
   yank_override,
   lsp,
+  highlight,
   noremap = true
 })
