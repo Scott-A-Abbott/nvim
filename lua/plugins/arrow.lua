@@ -9,6 +9,7 @@ return {
     mappings = {
       open_vertical = "r",
       open_horizontal = "d",
+      delete_mode = "D",
       next_item = ">",
       prev_item = "<"
     }
