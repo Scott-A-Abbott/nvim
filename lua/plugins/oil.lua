@@ -18,7 +18,7 @@ return {
           local path = vim.fn.fnamemodify(current_dir, ':.')
           vim.fn.setreg("+", path .. entry.name)
         end,
-        ["g?"] = "actions.show_help",
+        ["<leader>?"] = "actions.show_help",
         ["gp"] = "actions.preview",
         ["gr"] = "actions.refresh",
         -- ["gx"] = "actions.open_external",

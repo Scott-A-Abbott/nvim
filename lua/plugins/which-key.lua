@@ -19,6 +19,6 @@ return {
     -- hidden = { "<silent>", "<CR>", "call", "lua", "^:", "^ "},
   },
   keys = {
-    { "?", "<CMD>WhichKey<CR>", desc = "Key Mappings", mode = { "n", "v" } }
+    { "<leader>?", "<CMD>WhichKey<CR>", desc = "Key Mappings", mode = { "n", "v" } }
   }
 }

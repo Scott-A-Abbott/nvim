@@ -9,7 +9,7 @@ return {
     })
 
     local flash_line_jump = {
-      "<leader>l",
+      "gl",
       function()
         flash.jump({
           search = { mode = "search", max_length = 0 },
@@ -21,7 +21,7 @@ return {
     }
 
     local flash_forwards = {
-      "<leader>/",
+      "g/",
       function()
         flash.jump({
           search = { forward = true, wrap = false, multi_window = false },
@@ -31,7 +31,7 @@ return {
     }
 
     local flash_backwards = {
-      "<leader>?",
+      "g?",
       function()
         flash.jump({
           search = { forward = false, wrap = false, multi_window = false },
