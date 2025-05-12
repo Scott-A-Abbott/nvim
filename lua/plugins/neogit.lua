@@ -6,9 +6,6 @@ return {
       integrations = {
         fzf_lua = true,
       },
-      filewatcher = {
-        interval = 500
-      },
       mappings = { status = { ["gk"] = "Untrack", ["K"] = false } },
       commit_editor = {
         kind = "vsplit",
