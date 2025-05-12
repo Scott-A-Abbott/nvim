@@ -1,3 +1,21 @@
+local function paste_date()
+  local date = os.date("*t")
+  local weekday = os.date("%a")
+  local month = os.date("%b")
+  local formatted = string.format("%s %s %d %d", weekday, month, date.day, date.year)
+
+  local pos = vim.api.nvim_win_get_cursor(0)
+  local row = pos[1]
+  local col = pos[2]
+
+  local line = vim.api.nvim_get_current_line()
+
+  local new_line = line:sub(1, col + 1) .. formatted .. line:sub(col + 2)
+  vim.api.nvim_set_current_line(new_line)
+
+  vim.api.nvim_win_set_cursor(0, { row, col + #formatted })
+end
+
 local nv = { "n", "v" }
 
 local line_navigation = {
@@ -63,8 +81,9 @@ local lsp = {
   { ";]", vim.lsp.buf.goto_next, desc = "Go to next diagnostic" },
 }
 
-local highlight = {
-  { "gh", "<CMD>noh<CR>", desc = "Clear last search highlight", mode = nv }
+local global = {
+  { "gh", "<CMD>noh<CR>", desc = "Clear last search highlight", mode = nv },
+  { "gD", paste_date, desc = "Paste the current date", mode = n }
 }
 
 require("which-key").add({
@@ -73,6 +92,6 @@ require("which-key").add({
   window_navigation,
   yank_override,
   lsp,
-  highlight,
+  global,
   noremap = true
 })
