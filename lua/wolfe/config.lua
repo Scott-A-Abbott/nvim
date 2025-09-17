@@ -6,6 +6,9 @@ local wset = vim.wo
 -- Enable line numbers
 wset.number = true
 
+-- Set explicit hard wrap for formatting
+set.textwidth = 80
+
 -- Spellcheck
 set.spell = true
 gset.spelllang = "en_us"
