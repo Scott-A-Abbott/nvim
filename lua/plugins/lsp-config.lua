@@ -1,0 +1,12 @@
+return {
+  'neovim/nvim-lspconfig',
+  lazy = false,
+  config = function ()
+    vim.lsp.config('rust_analyzer', {
+      -- Server-specific settings. See `:help lsp-quickstart`
+      settings = {
+        ['rust-analyzer'] = {},
+      },
+    })
+  end,
+}
