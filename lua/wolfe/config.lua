@@ -7,7 +7,7 @@ local wset = vim.wo
 wset.number = true
 
 -- Set explicit hard wrap for formatting
-set.textwidth = 80
+-- set.textwidth = 80
 
 -- Spellcheck
 set.spell = true
