@@ -6,7 +6,7 @@ return {
 
     require("which-key").add({
       { "<leader>T", group = "Treesitter" },
-      { "<leader>Tc", "<CMD>TSContextToggle<CR>" , desc = "Context" },
+      { "<leader>Tc", "<CMD>TSContext toggle<CR>" , desc = "Context" },
       noremap = true
     })
   end
