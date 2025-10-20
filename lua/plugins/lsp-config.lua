@@ -10,5 +10,7 @@ return {
     })
 
     vim.lsp.enable('marksman')
+
+    vim.lsp.enable('typos-lsp')
   end,
 }
