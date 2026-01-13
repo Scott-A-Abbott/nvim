@@ -11,6 +11,12 @@ return {
 
     vim.lsp.enable('marksman')
 
+    vim.lsp.config('typos-lsp', {
+      cmd = { 'typos-lsp' },
+      init_options = {
+        diagnosticSeverity = 'Error'
+      },
+    })
     vim.lsp.enable('typos-lsp')
   end,
 }
