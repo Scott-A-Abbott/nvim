@@ -4,7 +4,7 @@ return {
   lazy = false,
   build = ":TSUpdate",
   config = function()
-    local langs = { "markdown", "markdown_inline", "scss", "lua", "ruby", "rust" }
+    local langs = { "markdown", "markdown_inline", "scss", "javascript", "lua", "ruby", "rust" }
     require("nvim-treesitter").install(langs)
 
     vim.api.nvim_create_autocmd("FileType", {
