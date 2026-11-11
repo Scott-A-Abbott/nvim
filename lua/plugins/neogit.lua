@@ -4,7 +4,7 @@ return {
   config = function()
     require("neogit").setup({
       integrations = {
-        fzf_lua = true,
+        snacks = true,
       },
       mappings = { status = { ["gk"] = "Untrack", ["K"] = false } },
       commit_editor = {
