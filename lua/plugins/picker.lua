@@ -13,6 +13,12 @@ return {
           explorer = {
             focus = "input",
             actions = {
+              -- Expand only (unlike confirm, which toggles and opens files).
+              explorer_expand = function(picker, item)
+                if not item or not item.dir or item.open then return end
+                require("snacks.explorer.tree"):open(item.file)
+                require("snacks.explorer.actions").update(picker, { refresh = true })
+              end,
               -- Files: close the picker and open in the last used window.
               -- Directories: keep the default behavior (toggle open).
               explorer_confirm_close = function(picker, item)
@@ -32,7 +38,14 @@ return {
             },
             win = {
               input = {
-                keys = { ["<CR>"] = { "explorer_confirm_close", mode = { "n", "i" } } },
+                keys = {
+                  ["<CR>"] = { "explorer_confirm_close", mode = { "n", "i" } },
+                  -- Insert mode only; in normal mode these fall through to the
+                  -- global <C-h>/<C-l> window navigation.
+                  ["<c-l>"] = { "explorer_expand", mode = "i" },
+                  ["<c-h>"] = { "explorer_close", mode = "i" },
+                  ["<c-z>"] = { "explorer_close_all", mode = { "n", "i" } },
+                },
               },
             },
           },
