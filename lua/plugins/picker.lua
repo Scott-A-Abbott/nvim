@@ -29,6 +29,8 @@ return {
       { "<leader>fl", function() picker.grep() end, desc = "Live grep" },
       { "<leader>fr", function() picker.resume() end, desc = "Resume" },
       { "<leader>fb", function() picker.buffers() end, desc = "Buffers" },
+      { "<leader>fg", function() picker.git_log() end, desc = "Git Log" },
+      { "<leader>fG", function() picker.git_log_file() end, desc = "Git Log (current file)" },
       noremap = true
     })
   end
