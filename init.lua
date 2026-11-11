@@ -21,13 +21,46 @@ require("lazy").setup("plugins", { change_detection = { notify = false } })
 do
   local focused = true
   local pending = false
-  local timer = assert(vim.uv.new_timer())
+  local popup ---@type table? the open popup, so we never stack two
+  local last_key = vim.uv.now() -- last keypress in this instance
 
   local function notify()
     if not pending then return end
     pending = false
-    vim.notify("Neovim config/plugins changed on disk. Restart to apply.", vim.log.levels.WARN)
+    if popup and popup.win and vim.api.nvim_win_is_valid(popup.win) then return end
+    local ok = pcall(function()
+      popup = Snacks.win({
+        text = {
+          "",
+          "  Neovim config/plugins changed on disk.",
+          "  Restart Neovim to apply.",
+          "",
+          "  Press <Enter> to dismiss",
+        },
+        position = "float",
+        width = 50,
+        height = 5,
+        border = "rounded",
+        title = " Config changed ",
+        title_pos = "center",
+        enter = true,
+        backdrop = 60,
+        bo = { modifiable = false, filetype = "config_changed" },
+        keys = {
+          ["<CR>"] = "close",
+          ["<Esc>"] = "close",
+          q = "close",
+        },
+      })
+    end)
+    if not ok then
+      vim.notify("Neovim config/plugins changed on disk. Restart to apply.", vim.log.levels.WARN)
+    end
   end
+
+  -- Focus events aren't always delivered (terminal/multiplexer dependent), so
+  -- "was I just using this instance?" is judged by recent keypresses too.
+  vim.on_key(function() last_key = vim.uv.now() end)
 
   vim.api.nvim_create_autocmd("FocusLost", { callback = function() focused = false end })
   vim.api.nvim_create_autocmd("FocusGained", {
@@ -37,15 +70,16 @@ do
       vim.defer_fn(notify, 100)
     end,
   })
+
   vim.api.nvim_create_autocmd("User", {
     pattern = "LazyReload",
     callback = function()
+      -- A change that lands while I'm actively using this instance (a save, a
+      -- neogit revert, ...) was made from here, so don't report it.
+      if focused and vim.uv.now() - last_key < 10000 then return end
       pending = true
-      if focused then
-        -- Debounce rapid saves in the instance being edited.
-        timer:stop()
-        timer:start(3000, 0, vim.schedule_wrap(notify))
-      end
+      -- Idle but (as far as we know) focused: nothing else will trigger it.
+      if focused then vim.schedule(notify) end
     end,
   })
 end
