@@ -67,13 +67,14 @@ vim.diagnostic.config({
 -- Display border to LSP floating panes
 local _border = "single"
 
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.buf.hover{
-  border=_border
-}
-
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.buf.signature_help{
-  border=_border
-}
+-- Since 0.11, hover/signature_help no longer route through vim.lsp.handlers,
+-- so wrap them to default the border (also covers the built-in K and <C-s>).
+for _, name in ipairs({ "hover", "signature_help" }) do
+  local orig = vim.lsp.buf[name]
+  vim.lsp.buf[name] = function(opts)
+    return orig(vim.tbl_extend("keep", opts or {}, { border = _border }))
+  end
+end
 
 vim.diagnostic.config{
   float={border=_border}

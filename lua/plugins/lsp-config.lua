@@ -8,6 +8,7 @@ return {
         ['rust-analyzer'] = {},
       },
     })
+    vim.lsp.enable('rust_analyzer')
 
     vim.lsp.enable('marksman')
 

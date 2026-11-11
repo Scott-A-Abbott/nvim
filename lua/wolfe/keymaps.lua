@@ -71,19 +71,20 @@ local lsp = {
   { ";d", vim.lsp.buf.definition, desc = "Go to definition" },
   { ";D", vim.lsp.buf.declaration, desc = "Go to declaration" },
   { ";i", vim.lsp.buf.implementation, desc = "List implementations" },
-  { ";h", vim.lsp.buf.hover, desc = "Code hover" },
+  -- Looked up at call time so the bordered wrapper in wolfe.config applies.
+  { ";h", function() vim.lsp.buf.hover() end, desc = "Code hover" },
   { ";n", vim.lsp.buf.rename, desc = "Rename" },
   { ";r", vim.lsp.buf.references, desc = "List references" },
   { ";t", vim.lsp.buf.type_definition, desc = "Type definition" },
-  { ";f", vim.lsp.buf.formatting, desc = "Formatting" },
-  { ";e", vim.lsp.buf.open_float, desc = "Open float" },
-  { ";[", vim.lsp.buf.goto_prev, desc = "Go to previous diagnostic" },
-  { ";]", vim.lsp.buf.goto_next, desc = "Go to next diagnostic" },
+  { ";f", function() vim.lsp.buf.format() end, desc = "Formatting" },
+  { ";e", function() vim.diagnostic.open_float() end, desc = "Open float" },
+  { ";[", function() vim.diagnostic.jump({ count = -1, float = true }) end, desc = "Go to previous diagnostic" },
+  { ";]", function() vim.diagnostic.jump({ count = 1, float = true }) end, desc = "Go to next diagnostic" },
 }
 
 local global = {
   { "gh", "<CMD>noh<CR>", desc = "Clear last search highlight", mode = nv },
-  { "gD", paste_date, desc = "Paste the current date", mode = n }
+  { "gD", paste_date, desc = "Paste the current date", mode = "n" }
 }
 
 require("which-key").add({
